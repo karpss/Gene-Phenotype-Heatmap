@@ -4,6 +4,7 @@ import { ResponsiveHeatMapCanvas } from "@nivo/heatmap";
 import { fetchGenePhenotypesData } from "../../api/fetchGenePhenotypesData";
 import {parseHeatmapData} from "../../util/parseHeatmapData";
 import "./index.css";
+import PaginateHeatmap from "../../components/PaginateHeatmap";
 
 const Heatmap = () => {
 
@@ -150,6 +151,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
         )}
         {paginatedHeatmapData && paginatedHeatmapData.length > 0 ? (
           <div className="heatmap_container" >
+            
             <ResponsiveHeatMapCanvas
               key={paginatedHeatmapData.length}
               data={paginatedHeatmapData}
@@ -195,24 +197,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
               
               borderWidth={2}
               enableLabels={true}
-              legends={[
-                {
-                  anchor: "bottom",
-                  translateX: 0,
-                  translateY: 30,
-                  length: 400,
-                  thickness: 8,
-                  direction: "row",
-                  tickPosition: "after",
-                  tickSize: 3,
-                  tickSpacing: 4,
-                  tickOverlap: false,
-                  tickFormat: ">-.2s",
-                  title: "Phentotype Count Label →",
-                  titleAlign: "start",
-                  titleOffset: 4,
-                },
-              ]}
+              
               annotations={[]}
             />
           </div>
@@ -220,10 +205,38 @@ let filteredHeatmapData: ParsedHeatmapData[] =
           <p className="empty_message"> No Data Found!</p>
         )}
 
+    <div className="pagination">
+    <PaginateHeatmap
+          page={page}
+          setPage={setPage}
+          totalHeatMapPages={totalHeatMapPages}
+        />
+        </div>
+
+       <div className="dataPerPage">
+          <label htmlFor="dataPerPage"> Showing </label>
+          <select
+            name="dataPerPage"
+            id="dataPerPage"
+            value={dataPerPage}
+            onChange={handlePageChange}
+          >
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
+          <label htmlFor="dataPerPage"> columns per page. </label>
+        </div>
+         
+        
+       
+        
+      </div>
 
 
 
-    </div>
+
+    
   )
 }
 

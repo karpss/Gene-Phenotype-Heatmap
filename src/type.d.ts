@@ -34,3 +34,10 @@ interface HeatmapListData {
    gene_list?: ParsedHeatmapData
   
 }
+
+interface PaginationProps {
+page: number;
+setPage: React.Dispatch<React.SetStateAction<number>>;
+totalHeatMapPages:number;
+
+}

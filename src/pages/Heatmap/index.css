@@ -1,13 +1,28 @@
 .heatmap_container{
+    display: flex;
     width: 1000px;
     height: 700px;
-    
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      
-      
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
 
 }
+
+.pagination {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .dataPerPage{
+    position: fixed;
+    bottom: 0;
+    right: 70%;
+    transform: translateX(-50%);
+    padding-bottom: 20px;
+  }
+
+  
 
