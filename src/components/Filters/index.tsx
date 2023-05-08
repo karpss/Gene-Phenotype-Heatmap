@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, {useMemo}  from 'react';
 import Select, { ActionMeta } from "react-select";
+import Button from 'react-bootstrap/Button';
 
 const Filters: React.FC<FilterProps> = ({
   data,
@@ -167,13 +168,7 @@ const Filters: React.FC<FilterProps> = ({
           </div>
         </div>
         <div className="col-md-6 col-sm-12 mb-2 d-flex justify-content-end">
-          <button
-            type="button"
-            className="btn btn-primary ms-2"
-            onClick={handleReset}
-          >
-            Reset Filters
-          </button>
+          <Button size="sm" onClick={handleReset} variant="primary">Reset</Button>{' '}
         </div>
       </div>
     </div>

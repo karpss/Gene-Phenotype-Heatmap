@@ -156,14 +156,14 @@ let filteredHeatmapData: ParsedHeatmapData[] =
         setFilter={setFilter}
         filter={filter}
       />
-     
+     <div className="heatmap-container" >
      {isLoading && (
           <div className="loading">
             <p>Loading...</p>
           </div>
         )}
         {paginatedHeatmapData && paginatedHeatmapData.length > 0 ? (
-          <div className="heatmap-container" >
+          <div className="heatmap-card" >
             
             <ResponsiveHeatMapCanvas
               key={paginatedHeatmapData.length}
@@ -218,6 +218,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
         ) : (
           <p className="empty_message"> No Data Found!</p>
         )}
+        </div>
 
     <div className="pagination">
     <PaginateHeatmap
