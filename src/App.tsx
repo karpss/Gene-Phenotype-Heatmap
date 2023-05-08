@@ -1,9 +1,10 @@
 /*eslint-disable*/
+import Heatmap from "./pages/Heatmap";
 
  function App() {
   return (
     <div>
-      Hello World
+      <Heatmap/>
     </div>
   );
 }
