@@ -5,6 +5,7 @@ import { fetchGenePhenotypesData } from "../../api/fetchGenePhenotypesData";
 import {parseHeatmapData} from "../../util/parseHeatmapData";
 import "./index.css";
 import PaginateHeatmap from "../../components/PaginateHeatmap";
+import Filters from "../../components/Filters";
 
 const Heatmap = () => {
 
@@ -78,12 +79,6 @@ let filteredHeatmapData: ParsedHeatmapData[] =
           }
 
 
-
-
-
-
-    
-
       
       
     },[heatmapData,
@@ -142,7 +137,25 @@ let filteredHeatmapData: ParsedHeatmapData[] =
 
 
   return (
-    <div>
+    <div className="main-container">
+      <div className="header">
+        <h1>IMPC Gene-Phenotype Associations Heatmap</h1>
+      </div>
+
+      <Filters
+        phenotype={phenotype}
+        setPhenotype={setPhenotype}
+        data={heatmapData}
+        percentage={percentage}
+        setPercentage={setPercentage}
+        page={page}
+        setPage={setPage}
+        onFilterChange={memoizedFilters}
+        genes={genes}
+        setGenes={setGenes}
+        setFilter={setFilter}
+        filter={filter}
+      />
      
      {isLoading && (
           <div className="loading">
@@ -150,7 +163,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
           </div>
         )}
         {paginatedHeatmapData && paginatedHeatmapData.length > 0 ? (
-          <div className="heatmap_container" >
+          <div className="heatmap-container" >
             
             <ResponsiveHeatMapCanvas
               key={paginatedHeatmapData.length}
@@ -194,6 +207,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
                 from: "color",
                 modifiers: [["darker", 8]]
               }}
+              emptyColor="#0000"
               
               borderWidth={2}
               enableLabels={true}

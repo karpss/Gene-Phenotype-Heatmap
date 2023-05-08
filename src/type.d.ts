@@ -11,6 +11,25 @@ interface FormattedData{
 
 }
 
+interface FilterProps{
+  
+  genes: string[];
+  setGenes: (genes: string[]) => void;
+  onFilterChange: () => void;
+  phenotype: string[];
+  setPhenotype: (phenotypes: string[]) => void;
+  percentage: number;
+  setPercentage: (percentages: number) => void;
+  page: number;
+  setPage: (page: number) => void;
+  filter: "genes_list" | "phenotype" | "calc_percentage" | undefined;
+  setFilter: React.Dispatch<React.SetStateAction<"genes_list" | "phenotype" | "calc_percentage" | undefined>>;
+  data: TransformedData | null;
+
+
+
+}
+
 
 interface PhenotypeData  {
     mp_term_id: string;

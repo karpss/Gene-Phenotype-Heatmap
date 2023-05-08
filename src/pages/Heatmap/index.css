@@ -1,11 +1,23 @@
-.heatmap_container{
+.main-container{
+padding-bottom: 30px;
+
+}
+
+.header{
+  margin: 10px;
+  text-align: center;
+}
+
+
+.heatmap-container{
     display: flex;
     width: 1000px;
-    height: 700px;
+    height: 200px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);    
+    transform: translate(-50%, -50%); 
+    padding-top: 160px;   
 
 }
 
