@@ -9,8 +9,8 @@ import PaginateHeatmap from "../../components/PaginateHeatmap";
 const Heatmap = () => {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [heatmapData, setHeatmapData] = useState<any>(null);
-    const [formattedheatmapData, setFormattedheatmapData] = useState<any | null>(null);
+    const [heatmapData, setHeatmapData] = useState<FormattedData | null>(null);
+    const [formattedheatmapData, setFormattedheatmapData] = useState<FormattedData | null>(null);
     const [page, setPage] = useState(0);
     const [dataPerPage, setDataPerPage] = useState(20);
     const [percentage, setPercentage] = useState<number>(0);
@@ -43,7 +43,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
           }
 
           if (filter === "calc_percentage" && percentage > 0) {
-            const topPercentage = Math.ceil((percentage / 100) * (heatmapData?.genes.length ?? 0));
+            const topPercentage = Math.ceil((percentage / 100) * (heatmapData?.gene_list.length ?? 0));
             filteredHeatmapData = filteredHeatmapData.length > topPercentage
               ? filteredHeatmapData.sort((a, b) => b.total_phenotype_terms - a.total_phenotype_terms).slice(0, topPercentage)
               : filteredHeatmapData;
@@ -57,7 +57,7 @@ let filteredHeatmapData: ParsedHeatmapData[] =
                 }
                 return {
                   ...phen,
-                  data: phen.data.filter((p:any) => phenotype.includes(p.top_level_phenotype_term_id)),
+                  data: phen.data.filter((p) => phenotype.includes(p.top_level_phenotype_term_id)),
                 };
               })
               .filter((phene) => phene.data.length > 0);

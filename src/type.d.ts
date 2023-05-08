@@ -1,6 +1,17 @@
 /*eslint-disable*/
 
 
+interface FormattedData{
+  gene_list:ParsedHeatmapData[];
+  genes_list_ranking: number[]
+  top_level_phenotype_terms: ({
+    index: number;
+  } & TopLevelPhenotypeTerm)[];
+
+
+}
+
+
 interface PhenotypeData  {
     mp_term_id: string;
     mp_term_name: string;
@@ -30,7 +41,7 @@ interface HeatmapListData {
    top_level_phenotype_term_id:string;
    phenotype_terms?: PhenotypeData[]
    procedures?: string[];
-   top_level_phenotype_term?: TopLevelPhenotype & { index: number };
+   top_level_phenotype_term?: TopLevelPhenotypeTerm & { index: number };
    gene_list?: ParsedHeatmapData
   
 }
