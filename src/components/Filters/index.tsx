@@ -78,7 +78,9 @@ function Filters({
     <div className="filter_container">
       <div className="row">
         <div className="col-md-6 col-sm-12 mb-2">
-          <label htmlFor="gene-filter-select">Filter by gene list:</label>
+          <label aria-label="Filter by gene list:" htmlFor="gene-filter-select">
+            Filter by gene list:
+          </label>
           <Select
             id="gene-filter-select"
             className="m-2 select-filter"
