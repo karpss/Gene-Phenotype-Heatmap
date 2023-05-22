@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import Select, { ActionMeta } from 'react-select';
+import Select from 'react-select';
 
 function Filters({
   data,
@@ -13,7 +13,7 @@ function Filters({
   setFilter,
   setPhenotype,
 }: FilterProps) {
-  const handleGeneFilter = (selections: any, _actionMeta: ActionMeta<any>) => {
+  const handleGeneFilter = (selections: any) => {
     const selectedGenes = selections
       ? selections.map(
           (option: { value: string; label: string }) => option.value
@@ -24,10 +24,7 @@ function Filters({
     onFilterChange();
   };
 
-  const handlePhenotypeFilter = (
-    selections: any,
-    _actionMeta: ActionMeta<any>
-  ) => {
+  const handlePhenotypeFilter = (selections: any) => {
     const topPhenotypes = selections
       ? selections.map(
           (option: { value: string; label: string }) => option.value
