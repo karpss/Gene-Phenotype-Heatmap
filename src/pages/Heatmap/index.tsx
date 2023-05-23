@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap';
 import fetchGenePhenotypesData from '../../api/fetchGenePhenotypesData';
-import { parseHeatmapData } from '../../util/parseHeatmapData';
+import parseHeatmapData from '../../util/parseHeatmapData';
 import './index.css';
 import PaginateHeatmap from '../../components/PaginateHeatmap';
 import Filters from '../../components/Filters';
@@ -25,7 +25,7 @@ function Heatmap() {
   const memoizedFilters = useCallback(() => {
     if (!heatmapData) return;
 
-    let filteredHeatmapData: ParsedHeatmapData[] = [...heatmapData.gene_list];
+    let filteredHeatmapData: ParsedHeatmapData[] = [...heatmapData.geneList];
 
     if (filter === 'genes_list') {
       filteredHeatmapData = filteredHeatmapData.filter((gene) => {
@@ -40,7 +40,7 @@ function Heatmap() {
 
     if (filter === 'calc_percentage' && percentage > 0) {
       const topPercentage = Math.ceil(
-        (percentage / 100) * (heatmapData?.gene_list.length ?? 0)
+        (percentage / 100) * (heatmapData?.geneList.length ?? 0)
       );
       filteredHeatmapData =
         filteredHeatmapData.length > topPercentage
@@ -68,7 +68,7 @@ function Heatmap() {
 
     setFormattedheatmapData({
       ...heatmapData,
-      gene_list: filteredHeatmapData,
+      geneList: filteredHeatmapData,
     });
 
     if (page * dataPerPage >= filteredHeatmapData.length) {
@@ -94,11 +94,11 @@ function Heatmap() {
   }, []);
 
   const totalHeatMapPages = Math.ceil(
-    (formattedheatmapData?.gene_list.length ?? 0) / dataPerPage
+    (formattedheatmapData?.geneList.length ?? 0) / dataPerPage
   );
 
   const paginatedHeatmapData = useMemo(() => {
-    return formattedheatmapData?.gene_list.slice(
+    return formattedheatmapData?.geneList.slice(
       page * dataPerPage,
       page * dataPerPage + dataPerPage
     );

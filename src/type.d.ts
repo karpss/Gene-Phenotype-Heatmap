@@ -1,7 +1,7 @@
 interface FormattedData {
-  gene_list: ParsedHeatmapData[];
-  genes_list_ranking: number[];
-  top_level_phenotype_terms: ({
+  geneList: ParsedHeatmapData[];
+  geneListRanking: number[];
+  topLevelPhenotypeTerms: ({
     index: number;
   } & TopLevelPhenotypeTerm)[];
 }

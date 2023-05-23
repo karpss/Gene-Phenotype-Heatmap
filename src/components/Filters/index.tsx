@@ -55,7 +55,7 @@ function Filters({
 
   const geneSelections = useMemo(
     () =>
-      data?.gene_list?.map((g: any) => ({
+      data?.geneList?.map((g: any) => ({
         value: g.marker_accession_id,
         label: g.id,
       })) ?? [],
@@ -64,7 +64,7 @@ function Filters({
 
   const phenotypeSelections = useMemo(
     () =>
-      data?.top_level_phenotype_terms?.map((phen: any) => ({
+      data?.topLevelPhenotypeTerms?.map((phen: any) => ({
         value: phen.top_level_mp_term_id,
         label: phen.top_level_mp_term_name,
       })) ?? [],
