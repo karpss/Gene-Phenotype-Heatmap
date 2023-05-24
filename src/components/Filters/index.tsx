@@ -1,5 +1,10 @@
 import React, { useMemo } from 'react';
-import Select from 'react-select';
+import Select, { MultiValue } from 'react-select';
+
+interface Option {
+  value: string;
+  label: string;
+}
 
 function Filters({
   data,
@@ -13,22 +18,18 @@ function Filters({
   setFilter,
   setPhenotype,
 }: FilterProps) {
-  const handleGeneFilter = (selections: any) => {
-    const selectedGenes = selections
-      ? selections.map(
-          (option: { value: string; label: string }) => option.value
-        )
+  const handleGeneFilter = (newValue: MultiValue<Option>) => {
+    const selectedGenes = newValue
+      ? newValue.map((option: Option) => option.value)
       : [];
     setGenes(selectedGenes);
     setFilter(selectedGenes.length > 0 ? 'genes_list' : undefined);
     onFilterChange();
   };
 
-  const handlePhenotypeFilter = (selections: any) => {
-    const topPhenotypes = selections
-      ? selections.map(
-          (option: { value: string; label: string }) => option.value
-        )
+  const handlePhenotypeFilter = (newValue: MultiValue<Option>) => {
+    const topPhenotypes = newValue
+      ? newValue.map((option: { value: string; label: string }) => option.value)
       : [];
     setPhenotype(topPhenotypes);
     setFilter(topPhenotypes.length > 0 ? 'phenotype' : undefined);
@@ -55,7 +56,7 @@ function Filters({
 
   const geneSelections = useMemo(
     () =>
-      data?.geneList?.map((g: any) => ({
+      data?.geneList?.map((g: ParsedHeatmapData) => ({
         value: g.marker_accession_id,
         label: g.id,
       })) ?? [],
@@ -64,7 +65,7 @@ function Filters({
 
   const phenotypeSelections = useMemo(
     () =>
-      data?.topLevelPhenotypeTerms?.map((phen: any) => ({
+      data?.topLevelPhenotypeTerms?.map((phen: TopLevelPhenotypeTerm) => ({
         value: phen.top_level_mp_term_id,
         label: phen.top_level_mp_term_name,
       })) ?? [],
@@ -94,7 +95,10 @@ function Filters({
           />
         </div>
         <div className="col-md-6 col-sm-12 mb-2">
-          <label htmlFor="phenotype-filter-select">
+          <label
+            aria-label="Filter by significant phenotype system:"
+            htmlFor="phenotype-filter-select"
+          >
             Filter by significant phenotype system:
           </label>
           <Select
