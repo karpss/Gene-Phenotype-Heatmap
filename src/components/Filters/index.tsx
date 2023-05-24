@@ -29,7 +29,7 @@ function Filters({
 
   const handlePhenotypeFilter = (newValue: MultiValue<Option>) => {
     const topPhenotypes = newValue
-      ? newValue.map((option: { value: string; label: string }) => option.value)
+      ? newValue.map((option: Option) => option.value)
       : [];
     setPhenotype(topPhenotypes);
     setFilter(topPhenotypes.length > 0 ? 'phenotype' : undefined);
