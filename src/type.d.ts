@@ -22,7 +22,7 @@ interface FilterProps {
       'genes_list' | 'phenotype' | 'calc_percentage' | undefined
     >
   >;
-  data: TransformedData | null;
+  data?: FormattedData | null;
 }
 
 interface PhenotypeData {

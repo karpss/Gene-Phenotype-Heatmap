@@ -13,10 +13,10 @@ describe('Filters', () => {
   const setPercentageMock = vi.fn();
   const setPageMock = vi.fn();
 
-  const geneSelections = [
-    { value: 'gene1', label: 'Gene 1' },
-    { value: 'gene2', label: 'Gene 2' },
-  ];
+  // const geneSelections = [
+  //   { value: 'gene1', label: 'Gene 1' },
+  //   { value: 'gene2', label: 'Gene 2' },
+  // ];
 
   it('handles percentage filter change', () => {
     render(
@@ -25,7 +25,6 @@ describe('Filters', () => {
         setGenes={setGenesMock}
         setFilter={setFilterMock}
         onFilterChange={onFilterChangeMock}
-        data={{ gene_list: geneSelections }}
         phenotype={['phen1']}
         setPhenotype={setPhenotypeMock}
         percentage={30}
@@ -52,7 +51,6 @@ describe('Filters', () => {
         setGenes={setGenesMock}
         setFilter={setFilterMock}
         onFilterChange={onFilterChangeMock}
-        data={{ gene_list: geneSelections }}
         phenotype={['phen1']}
         setPhenotype={setPhenotypeMock}
         percentage={30}
