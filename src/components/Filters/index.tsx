@@ -86,7 +86,7 @@ function Filters({
             value={genes.map((gene) => ({
               value: gene,
               label:
-                geneSelections?.find((option: any) => option.value === gene)
+                geneSelections?.find((option: Option) => option.value === gene)
                   ?.label || '',
             }))}
             isMulti
@@ -109,7 +109,7 @@ function Filters({
               value: phen,
               label:
                 phenotypeSelections?.find(
-                  (option: any) => option.value === phen
+                  (option: Option) => option.value === phen
                 )?.label || '',
             }))}
             isMulti
