@@ -85,9 +85,9 @@ const parseHeatmapData = (data) => {
     a.top_level_mp_term_name.localeCompare(b.top_level_mp_term_name, 'en-US')
   );
 
-  topLevelPhenotypeTerms.forEach((value, index) => {
-    topLevelPhenotypeTerms[index] = { ...value, index };
-  });
+  // topLevelPhenotypeTerms.forEach((value, index) => {
+  // topLevelPhenotypeTerms[index] = { ...value, index };
+  // });
 
   return {
     geneList,

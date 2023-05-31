@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap';
 import fetchGenePhenotypesData from '../../api/fetchGenePhenotypesData';
 import parseHeatmapData from '../../util/parseHeatmapData';
-import './index.css';
+import styles from './Heatmap.module.css';
 import PaginateHeatmap from '../../components/PaginateHeatmap';
 import Filters from '../../components/Filters';
 
@@ -105,8 +105,8 @@ function Heatmap() {
   }, [page, formattedheatmapData, dataPerPage]);
 
   return (
-    <div className="main-container">
-      <div className="header">
+    <div className={styles.main_container}>
+      <div className={styles.header}>
         <h1>IMPC Gene-Phenotype Associations Heatmap</h1>
       </div>
 
@@ -124,14 +124,14 @@ function Heatmap() {
         setFilter={setFilter}
         filter={filter}
       />
-      <div className="heatmap-container">
+      <div className={styles.heatmap_container}>
         {isLoading && (
-          <div className="loading">
+          <div>
             <p>Loading...</p>
           </div>
         )}
         {paginatedHeatmapData && paginatedHeatmapData.length > 0 ? (
-          <div className="heatmap-card">
+          <div className={styles.heatmap_card}>
             <ResponsiveHeatMapCanvas
               key={paginatedHeatmapData.length}
               data={paginatedHeatmapData}
@@ -179,11 +179,11 @@ function Heatmap() {
             />
           </div>
         ) : (
-          <p className="empty_message"> No Data Found!</p>
+          <p> No Data Found!</p>
         )}
       </div>
 
-      <div className="pagination">
+      <div className={styles.pagination}>
         <PaginateHeatmap
           page={page}
           setPage={setPage}
@@ -191,7 +191,7 @@ function Heatmap() {
         />
       </div>
 
-      <div className="dataPerPage">
+      <div className={styles.dataPerPage}>
         <label htmlFor="dataPerPage"> Showing </label>
         <select
           name="dataPerPage"
